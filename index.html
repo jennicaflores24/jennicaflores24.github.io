@@ -37,7 +37,19 @@ a{color:inherit;}
 
 /* nav */
 .nav{position:sticky; top:0; z-index:20; background:var(--plum); color:var(--pink-pale); padding:16px 0; padding-top:calc(16px + env(safe-area-inset-top,0px));}
-.nav .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+.nav .wrap{display:flex; align-items:center; flex-wrap:wrap; gap:10px;}
+.nav-top{display:flex; justify-content:space-between; align-items:center; gap:10px;}
+@media (min-width:641px){
+  .nav .wrap{justify-content:space-between;}
+  .nav-top{display:contents;}
+  .nav .brand{order:1;}
+  .nav .links{order:2;}
+  .nav .ph-clock{order:3;}
+}
+@media (max-width:640px){
+  .nav .wrap{flex-direction:column;}
+  .nav-top{width:100%;}
+}
 .nav .brand{font-family:'Fraunces',serif; font-weight:600; font-size:1.15rem; color:var(--white);}
 .nav .links{display:flex; gap:20px; flex-wrap:wrap;}
 .nav .links a{font-size:0.82rem; color:#D9B3BD; text-decoration:none;}
@@ -140,7 +152,8 @@ a{color:inherit;}
 }
 .views-dot{width:5px; height:5px; border-radius:50%; background:#5FAE7E; box-shadow:0 0 5px 1px #5FAE7E88; flex:none;}
 .views-pill span#views-count{color:var(--pink); font-weight:700;}
-@media (max-width:520px){ .views-pill{top:calc(66px + env(safe-area-inset-top,0px)); right:10px; font-size:0.6rem; padding:3px 8px;} }
+@media (max-width:640px){ .views-pill{top:calc(108px + env(safe-area-inset-top,0px));} }
+@media (max-width:520px){ .views-pill{top:calc(100px + env(safe-area-inset-top,0px)); right:10px; font-size:0.6rem; padding:3px 8px;} }
 .hero h1{font-size:clamp(2.2rem,6vw,3.5rem); font-weight:600; line-height:1.08; max-width:14ch;}
 .hero h1 em{
   font-style:italic;
@@ -424,12 +437,14 @@ footer.credit{text-align:center; padding:30px 22px; color:#8A6672; font-size:0.7
 
 <nav class="nav">
   <div class="wrap">
-    <span class="brand">Jennica M. Flores</span>
+    <div class="nav-top">
+      <span class="brand">Jennica M. Flores</span>
+      <div class="ph-clock" id="ph-clock">—</div>
+    </div>
     <div class="links">
       <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Work</a>
       <a href="#projects">Projects</a><a href="#certs">Certs</a><a href="#contact">Contact</a>
     </div>
-    <div class="ph-clock" id="ph-clock">—</div>
   </div>
 </nav>
 
